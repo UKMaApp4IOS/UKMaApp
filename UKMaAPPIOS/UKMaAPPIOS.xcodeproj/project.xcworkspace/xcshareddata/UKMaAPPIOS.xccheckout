@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E35AB131-23F8-45CC-8E80-E71ABB91AAAF</string>
+	<key>IDESourceControlProjectName</key>
+	<string>UKMaAPPIOS</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>62BA5C1A06ACCD68C8BB274C4652868180671069</key>
+		<string>https://github.com/UKMaApp4IOS/UKMaApp.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>UKMaAPPIOS/UKMaAPPIOS.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>62BA5C1A06ACCD68C8BB274C4652868180671069</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/UKMaApp4IOS/UKMaApp.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>62BA5C1A06ACCD68C8BB274C4652868180671069</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>62BA5C1A06ACCD68C8BB274C4652868180671069</string>
+			<key>IDESourceControlWCCName</key>
+			<string>UKMaApp</string>
+		</dict>
+	</array>
+</dict>
+</plist>
