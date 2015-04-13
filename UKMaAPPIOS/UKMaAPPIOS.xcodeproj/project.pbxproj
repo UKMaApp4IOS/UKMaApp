@@ -29,6 +29,10 @@
 		BF24F6C71A9E4F58008DABAB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF24F6C51A9E4F58008DABAB /* LaunchScreen.xib */; };
 		BF24F6D31A9E4F58008DABAB /* UKMaAPPIOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF24F6D21A9E4F58008DABAB /* UKMaAPPIOSTests.m */; };
 		BFA65A841ACEE6CF004EF8FB /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = BFA65A831ACEE6CF004EF8FB /* Test.m */; };
+		BFEAE69B1AD9AD48008A4027 /* Building.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEAE69A1AD9AD48008A4027 /* Building.m */; };
+		BFEAE69F1AD9B6B6008A4027 /* BuildingStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEAE69E1AD9B6B6008A4027 /* BuildingStore.m */; };
+		BFEAE6A11AD9BAB4008A4027 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEAE6A01AD9BAB4008A4027 /* libsqlite3.dylib */; };
+		BFEAE6A21AD9BB3B008A4027 /* Buildings.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = BFEAE69C1AD9AE35008A4027 /* Buildings.sqlite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +75,12 @@
 		BF24F6D21A9E4F58008DABAB /* UKMaAPPIOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UKMaAPPIOSTests.m; sourceTree = "<group>"; };
 		BFA65A821ACEE6CF004EF8FB /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
 		BFA65A831ACEE6CF004EF8FB /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
+		BFEAE6991AD9AD48008A4027 /* Building.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Building.h; sourceTree = "<group>"; };
+		BFEAE69A1AD9AD48008A4027 /* Building.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Building.m; sourceTree = "<group>"; };
+		BFEAE69C1AD9AE35008A4027 /* Buildings.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = Buildings.sqlite; path = ../Buildings.sqlite; sourceTree = "<group>"; };
+		BFEAE69D1AD9B6B6008A4027 /* BuildingStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingStore.h; sourceTree = "<group>"; };
+		BFEAE69E1AD9B6B6008A4027 /* BuildingStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingStore.m; sourceTree = "<group>"; };
+		BFEAE6A01AD9BAB4008A4027 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFEAE6A11AD9BAB4008A4027 /* libsqlite3.dylib in Frameworks */,
 				BF1385F21AA4F7180039BEA9 /* SystemConfiguration.framework in Frameworks */,
 				BF1385F01AA4F7020039BEA9 /* QuartzCore.framework in Frameworks */,
 				BF1385EE1AA4F6F80039BEA9 /* OpenGLES.framework in Frameworks */,
@@ -107,6 +118,7 @@
 		BF24F6AA1A9E4F58008DABAB = {
 			isa = PBXGroup;
 			children = (
+				BFEAE6A01AD9BAB4008A4027 /* libsqlite3.dylib */,
 				BF1385F11AA4F7170039BEA9 /* SystemConfiguration.framework */,
 				BF1385EF1AA4F7020039BEA9 /* QuartzCore.framework */,
 				BF1385ED1AA4F6F80039BEA9 /* OpenGLES.framework */,
@@ -139,6 +151,7 @@
 		BF24F6B51A9E4F58008DABAB /* UKMaAPPIOS */ = {
 			isa = PBXGroup;
 			children = (
+				BFEAE69C1AD9AE35008A4027 /* Buildings.sqlite */,
 				BF24F6BA1A9E4F58008DABAB /* AppDelegate.h */,
 				BF24F6BB1A9E4F58008DABAB /* AppDelegate.m */,
 				BF24F6BD1A9E4F58008DABAB /* ViewController.h */,
@@ -146,6 +159,10 @@
 				BF24F6C01A9E4F58008DABAB /* Main.storyboard */,
 				BF24F6C31A9E4F58008DABAB /* Images.xcassets */,
 				BF24F6C51A9E4F58008DABAB /* LaunchScreen.xib */,
+				BFEAE6991AD9AD48008A4027 /* Building.h */,
+				BFEAE69A1AD9AD48008A4027 /* Building.m */,
+				BFEAE69D1AD9B6B6008A4027 /* BuildingStore.h */,
+				BFEAE69E1AD9B6B6008A4027 /* BuildingStore.m */,
 				BF24F6B61A9E4F58008DABAB /* Supporting Files */,
 				BFA65A821ACEE6CF004EF8FB /* Test.h */,
 				BFA65A831ACEE6CF004EF8FB /* Test.m */,
@@ -260,6 +277,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFEAE6A21AD9BB3B008A4027 /* Buildings.sqlite in Resources */,
 				BF24F6C21A9E4F58008DABAB /* Main.storyboard in Resources */,
 				BF24F6C71A9E4F58008DABAB /* LaunchScreen.xib in Resources */,
 				BF24F6C41A9E4F58008DABAB /* Images.xcassets in Resources */,
@@ -281,10 +299,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFEAE69B1AD9AD48008A4027 /* Building.m in Sources */,
 				BF24F6BF1A9E4F58008DABAB /* ViewController.m in Sources */,
 				BFA65A841ACEE6CF004EF8FB /* Test.m in Sources */,
 				BF24F6BC1A9E4F58008DABAB /* AppDelegate.m in Sources */,
 				BF24F6B91A9E4F58008DABAB /* main.m in Sources */,
+				BFEAE69F1AD9B6B6008A4027 /* BuildingStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

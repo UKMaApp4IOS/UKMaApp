@@ -37,16 +37,17 @@
     // coordinate -33.86,151.20 at zoom level 6.
   
     
-   
+    //Sets cameras position to University of Kentucky.
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:38.0333 longitude:-84.5000 zoom:14];
     
-    
+    //Creates map view for map and enables users location to be shown.
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.myLocationEnabled = YES;
 
     NSLog(@"User's location: %@", mapView_.myLocation);
-    self.view = mapView_;
+    self.view = mapView_;//Sets current view to be mapView
     // Creates a marker in the center of the map.
+    //Sample marker.
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.position = CLLocationCoordinate2DMake(38.03330,-84.5000 );
     marker.title = @"Lexington";

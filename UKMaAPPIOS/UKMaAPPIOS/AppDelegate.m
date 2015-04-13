@@ -17,13 +17,16 @@
 @synthesize locationManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    //API key used for map services from Google.
     [GMSServices provideAPIKey:@"AIzaSyDtjb0wnn0crUHBjDeBQlGj0dJ2ZTioFvI"];
     // Override point for customization after application launch.
+    //Initialize a location manager and set various options to controll accuracy.
     self.locationManager = [[CLLocationManager alloc] init];
     geocoder = [[CLGeocoder alloc] init];
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    // Check if system version for current device is greater than 8.0, if so request users location data use.
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
     {
         [self.locationManager requestAlwaysAuthorization];
@@ -35,12 +38,13 @@
 {
     NSLog(@"didFailWithError: %@", error);
 }
+//Called when location changed.
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
     
     CLLocation *currentLocation = newLocation;
     NSLog(@"%@", currentLocation);
-    
+    //The following code reverse geocodes location and prints location to terminal.
     [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
         
         if (error == nil && [placemarks count] > 0) {

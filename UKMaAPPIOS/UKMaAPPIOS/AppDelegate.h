@@ -13,7 +13,6 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
 {
-    //CLLocationManager *locationManager;
     CLGeocoder *geocoder;
     CLPlacemark *placemark;
 }
