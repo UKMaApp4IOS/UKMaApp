@@ -37,6 +37,10 @@
     // coordinate -33.86,151.20 at zoom level 6.
   
     
+    
+    
+    
+    
     //Sets cameras position to University of Kentucky.
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:38.0333 longitude:-84.5000 zoom:14];
     

@@ -11,6 +11,5 @@
 //#import <CLLocationManager.h>
 @interface ViewController : UIViewController
 
-
-@end
+@property (strong, nonatomic) UISearchController *searchController;@end
 

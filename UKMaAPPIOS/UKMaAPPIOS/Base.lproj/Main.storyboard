@@ -4,6 +4,33 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
+        <!--Main Table View Controller-->
+        <scene sceneID="I4a-zj-XGW">
+            <objects>
+                <tableViewController id="Hpb-dk-6CD" customClass="MainTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RHD-bo-rfX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="f0c-Id-e0h">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f0c-Id-e0h" id="ueQ-Tk-jiN">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Hpb-dk-6CD" id="VmV-YN-DjM"/>
+                            <outlet property="delegate" destination="Hpb-dk-6CD" id="Uz7-1g-Ivz"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="gtK-XT-o1y"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mBj-vk-v5X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="321" y="1023"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -17,9 +44,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="JbJ-Gm-GvU">
-                        <barButtonItem key="leftBarButtonItem" image="GMSSprites-0-1x.png" id="JrH-a3-1Tx"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="JbJ-Gm-GvU"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -61,7 +86,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="gdY-Jc-WeN"/>
+                        <segue destination="Hpb-dk-6CD" kind="relationship" relationship="rootViewController" id="5hT-vJ-4ue"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1f2-1U-ET5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -84,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vdk-ol-nu0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="282" y="97"/>
+            <point key="canvasLocation" x="1436" y="-455"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="7Ca-Ek-XIQ">
@@ -142,8 +167,44 @@
             </objects>
             <point key="canvasLocation" x="-526" y="-249"/>
         </scene>
+        <!--DetailViewController-->
+        <scene sceneID="rDs-Kh-YO8">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="a35-Nb-1os" userLabel="DetailViewController" customClass="DetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3jE-3W-e2U"/>
+                        <viewControllerLayoutGuide type="bottom" id="XWl-6S-D7B"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cMp-zw-HET">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdU-CM-ru6">
+                                <rect key="frame" x="72" y="20" width="228" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" fixedFrame="YES" text="Name:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZC-82-CA0">
+                                <rect key="frame" x="20" y="20" width="57" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.82047193880000002" green="0.82047193880000002" blue="0.82047193880000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" id="dgk-hK-4HR"/>
+                    <connections>
+                        <outlet property="buildingName" destination="tdU-CM-ru6" id="FxR-gQ-d4x"/>
+                        <outlet property="view" destination="cMp-zw-HET" id="hNP-yw-rtn"/>
+                        <outlet property="yearLabel" destination="tdU-CM-ru6" id="PXR-RT-YnA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4np-4w-rTW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1298" y="963"/>
+        </scene>
     </scenes>
-    <resources>
-        <image name="GMSSprites-0-1x.png" width="128" height="142"/>
-    </resources>
 </document>

@@ -33,6 +33,11 @@
 		BFEAE69F1AD9B6B6008A4027 /* BuildingStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEAE69E1AD9B6B6008A4027 /* BuildingStore.m */; };
 		BFEAE6A11AD9BAB4008A4027 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEAE6A01AD9BAB4008A4027 /* libsqlite3.dylib */; };
 		BFEAE6A21AD9BB3B008A4027 /* Buildings.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = BFEAE69C1AD9AE35008A4027 /* Buildings.sqlite */; };
+		BFF637741ADBE775001F53D9 /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF637731ADBE775001F53D9 /* MainTableViewController.m */; };
+		BFF6377A1ADBF85D001F53D9 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF637791ADBF85D001F53D9 /* BaseTableViewController.m */; };
+		BFF6377D1ADBFA7A001F53D9 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF6377C1ADBFA7A001F53D9 /* DetailViewController.m */; };
+		BFF637801ADBFAE5001F53D9 /* ResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF6377F1ADBFAE5001F53D9 /* ResultsTableViewController.m */; };
+		BFF637821ADBFCFE001F53D9 /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFF637811ADBFCFE001F53D9 /* TableCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +86,15 @@
 		BFEAE69D1AD9B6B6008A4027 /* BuildingStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingStore.h; sourceTree = "<group>"; };
 		BFEAE69E1AD9B6B6008A4027 /* BuildingStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingStore.m; sourceTree = "<group>"; };
 		BFEAE6A01AD9BAB4008A4027 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		BFF637721ADBE775001F53D9 /* MainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableViewController.h; sourceTree = "<group>"; };
+		BFF637731ADBE775001F53D9 /* MainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableViewController.m; sourceTree = "<group>"; };
+		BFF637781ADBF85D001F53D9 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
+		BFF637791ADBF85D001F53D9 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
+		BFF6377B1ADBFA7A001F53D9 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = ../DetailViewController.h; sourceTree = "<group>"; };
+		BFF6377C1ADBFA7A001F53D9 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = ../DetailViewController.m; sourceTree = "<group>"; };
+		BFF6377E1ADBFAE5001F53D9 /* ResultsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResultsTableViewController.h; path = ../ResultsTableViewController.h; sourceTree = "<group>"; };
+		BFF6377F1ADBFAE5001F53D9 /* ResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResultsTableViewController.m; path = ../ResultsTableViewController.m; sourceTree = "<group>"; };
+		BFF637811ADBFCFE001F53D9 /* TableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +165,14 @@
 		BF24F6B51A9E4F58008DABAB /* UKMaAPPIOS */ = {
 			isa = PBXGroup;
 			children = (
+				BFF637781ADBF85D001F53D9 /* BaseTableViewController.h */,
+				BFF637791ADBF85D001F53D9 /* BaseTableViewController.m */,
+				BFF6377B1ADBFA7A001F53D9 /* DetailViewController.h */,
+				BFF6377C1ADBFA7A001F53D9 /* DetailViewController.m */,
+				BFF637721ADBE775001F53D9 /* MainTableViewController.h */,
+				BFF637731ADBE775001F53D9 /* MainTableViewController.m */,
+				BFF6377E1ADBFAE5001F53D9 /* ResultsTableViewController.h */,
+				BFF6377F1ADBFAE5001F53D9 /* ResultsTableViewController.m */,
 				BFEAE69C1AD9AE35008A4027 /* Buildings.sqlite */,
 				BF24F6BA1A9E4F58008DABAB /* AppDelegate.h */,
 				BF24F6BB1A9E4F58008DABAB /* AppDelegate.m */,
@@ -173,6 +195,7 @@
 		BF24F6B61A9E4F58008DABAB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BFF637811ADBFCFE001F53D9 /* TableCell.xib */,
 				BF24F6B71A9E4F58008DABAB /* Info.plist */,
 				BF24F6B81A9E4F58008DABAB /* main.m */,
 			);
@@ -281,6 +304,7 @@
 				BF24F6C21A9E4F58008DABAB /* Main.storyboard in Resources */,
 				BF24F6C71A9E4F58008DABAB /* LaunchScreen.xib in Resources */,
 				BF24F6C41A9E4F58008DABAB /* Images.xcassets in Resources */,
+				BFF637821ADBFCFE001F53D9 /* TableCell.xib in Resources */,
 				BF1385DA1AA4F59B0039BEA9 /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,7 +324,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFEAE69B1AD9AD48008A4027 /* Building.m in Sources */,
+				BFF6377A1ADBF85D001F53D9 /* BaseTableViewController.m in Sources */,
+				BFF6377D1ADBFA7A001F53D9 /* DetailViewController.m in Sources */,
 				BF24F6BF1A9E4F58008DABAB /* ViewController.m in Sources */,
+				BFF637801ADBFAE5001F53D9 /* ResultsTableViewController.m in Sources */,
+				BFF637741ADBE775001F53D9 /* MainTableViewController.m in Sources */,
 				BFA65A841ACEE6CF004EF8FB /* Test.m in Sources */,
 				BF24F6BC1A9E4F58008DABAB /* AppDelegate.m in Sources */,
 				BF24F6B91A9E4F58008DABAB /* main.m in Sources */,
