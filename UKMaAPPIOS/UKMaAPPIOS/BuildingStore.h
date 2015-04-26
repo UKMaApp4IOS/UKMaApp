@@ -21,4 +21,5 @@
                    BuildingUrl:(NSString *) buildingUrl
                   BuildingType:(NSString *) buildingType
                  BuildingHours:(NSString *) buildingHours;
+-(void) clearStore;
 @end

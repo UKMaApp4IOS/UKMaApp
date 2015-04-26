@@ -1,31 +1,23 @@
 //
-//  MainTableViewController.m
+//  exampleViewController.m
 //  UKMaAPPIOS
 //
-//  Created by Patrick Good on 4/13/15.
+//  Created by Patrick Good on 4/26/15.
 //  Copyright (c) 2015 Patrick Good. All rights reserved.
 //
 
-#import "MainTableViewController.h"
-
+#import "exampleViewController.h"
 #import "DetailViewController.h"
 #import "ResultsTableViewController.h"
 #import "Building.h"
-@interface MainTableViewController () <UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating>
-
+@interface exampleViewController ()<UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating>
 @property (nonatomic, strong) UISearchController *searchController;
 
 // our secondary search results table view
 @property (nonatomic, strong) ResultsTableViewController *resultsTableController;
-
-
 @end
 
-
-#pragma mark -
-
-
-@implementation MainTableViewController
+@implementation exampleViewController
 -(NSString *) filePath {
     // NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     //return [[paths objectAtIndex: 0] stringByAppendingPathComponent:@"Warframe.sqlite"];
@@ -34,7 +26,7 @@
     NSString * myFile = [mainBundle pathForResource: @"Buildings" ofType: @"sqlite"];
     NSLog(@"%@", myFile);
     return myFile;
-
+    
 }
 -(void) openDB{
     if(sqlite3_open([[self filePath] UTF8String], &db) != SQLITE_OK){
@@ -45,7 +37,6 @@
         NSLog(@"Database opened");
     }
 }
-
 
 
 - (void)viewDidLoad {
@@ -75,9 +66,9 @@
             }
             
             double field3 = (double) sqlite3_column_double(statement,1);
-//            double field3Str = [[double alloc] initWithUTF8String:field3];
+            //            double field3Str = [[double alloc] initWithUTF8String:field3];
             double field4 = (double) sqlite3_column_double(statement,1);
-//            double *field4Str = [[NSString alloc] initWithUTF8String:field4];
+            //            double *field4Str = [[NSString alloc] initWithUTF8String:field4];
             char *field5 = (char *) sqlite3_column_text(statement,1);
             if(field5 == NULL)
             {
@@ -125,10 +116,10 @@
     _searchController = [[UISearchController alloc] initWithSearchResultsController:self.resultsTableController];
     self.searchController.searchResultsUpdater = self;
     [self.searchController.searchBar sizeToFit];
-    self.tableView.tableHeaderView = self.searchController.searchBar;
+    self.mapSearchBar = self.searchController.searchBar;
     
     // we want to be the delegate for our filtered table so didSelectRowAtIndexPath is called for both tables
-    self.resultsTableController.tableView.delegate = self;
+    self.resultsTableController.tableView.delegate = self.resultsTableController;
     self.searchController.delegate = self;
     self.searchController.dimsBackgroundDuringPresentation = NO; // default is YES
     self.searchController.searchBar.delegate = self; // so we can monitor text changes + others
@@ -150,16 +141,6 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 }
-
-
-#pragma mark - UISearchBarDelegate
-
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    [searchBar resignFirstResponder];
-    NSLog(@"cat");
-}
-
-
 #pragma mark - UISearchControllerDelegate
 
 // Called after the search controller's search bar has agreed to begin editing or when
@@ -194,54 +175,19 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 1;
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+    NSLog(@"cat");
 }
+/*
+#pragma mark - Navigation
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    NSLog(@"Count = %lu",(unsigned long)[[[BuildingStore defaultStore] allBuildings] count]);
-    return [[[BuildingStore defaultStore] allBuildings] count];
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
 }
-
-#pragma mark - UITableViewDelegate
-
-/*- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.products.count;
-}*/
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = (UITableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
-    
-    Building *building = [[[BuildingStore defaultStore] allBuildings]
-                          objectAtIndex:[indexPath row]];
-
-    [self configureCell:cell forBuilding:building];
-    
-    return cell;
-}
-
-// here we are the table view delegate for both our main table and filtered table, so we can
-// push from the current navigation controller (resultsTableController's parent view controller
-// is not this UINavigationController)
-//
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    Building *selectedBuilding = (tableView == self.tableView) ?
-    [[[BuildingStore defaultStore] allBuildings]
-     objectAtIndex:[indexPath row]] : self.resultsTableController.filteredBuildings[indexPath.row];
-    
-    NSLog(@"Cell Name CLicked = %@", selectedBuilding.buildingName);
-}
-
-
-#pragma mark - UISearchResultsUpdating
-
+*/
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
     // update the filtered array based on the search text
     
@@ -260,12 +206,5 @@
     tableController.filteredBuildings = searchResults;
     [tableController.tableView reloadData];
 }
-
-
-
-
-
-
-
 
 @end

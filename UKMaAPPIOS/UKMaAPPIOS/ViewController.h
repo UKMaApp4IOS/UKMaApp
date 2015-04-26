@@ -8,8 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "building.h"
+#import <GoogleMaps/GoogleMaps.h>
+#import "BuildingStore.h"
+#import "sqlite3.h"
 //#import <CLLocationManager.h>
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<GMSMapViewDelegate>
+{
+    sqlite3 *db;
+    
+}
+-(NSString*) filePath;
+- (void) openDB;
 
-@property (strong, nonatomic) UISearchController *searchController;@end
+@property (nonatomic) NSMutableArray * buildingObjects;
 
+
+@property (nonatomic) BOOL isSearch;
+@property (nonatomic) Building *searchedBuilding;
+@end

@@ -53,4 +53,11 @@ static BuildingStore *defaultStore = nil;
     [allBuildings addObject:b];
     return b;
 }
+-(void) clearStore{
+    
+    //for (int i = 0; i < [allBuildings count]; i++) {
+        [allBuildings removeAllObjects];
+    //}
+    
+}
 @end

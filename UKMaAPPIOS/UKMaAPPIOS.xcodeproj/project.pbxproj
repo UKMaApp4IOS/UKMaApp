@@ -21,6 +21,8 @@
 		BF1385EE1AA4F6F80039BEA9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1385ED1AA4F6F80039BEA9 /* OpenGLES.framework */; };
 		BF1385F01AA4F7020039BEA9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1385EF1AA4F7020039BEA9 /* QuartzCore.framework */; };
 		BF1385F21AA4F7180039BEA9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1385F11AA4F7170039BEA9 /* SystemConfiguration.framework */; };
+		BF1F65841AE42CBD00A41C3B /* BuildingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1F65831AE42CBD00A41C3B /* BuildingDetailViewController.m */; };
+		BF1F65871AE44A8D00A41C3B /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1F65861AE44A8D00A41C3B /* WebViewController.m */; };
 		BF24F6B91A9E4F58008DABAB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF24F6B81A9E4F58008DABAB /* main.m */; };
 		BF24F6BC1A9E4F58008DABAB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF24F6BB1A9E4F58008DABAB /* AppDelegate.m */; };
 		BF24F6BF1A9E4F58008DABAB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF24F6BE1A9E4F58008DABAB /* ViewController.m */; };
@@ -33,11 +35,14 @@
 		BFEAE69F1AD9B6B6008A4027 /* BuildingStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEAE69E1AD9B6B6008A4027 /* BuildingStore.m */; };
 		BFEAE6A11AD9BAB4008A4027 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEAE6A01AD9BAB4008A4027 /* libsqlite3.dylib */; };
 		BFEAE6A21AD9BB3B008A4027 /* Buildings.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = BFEAE69C1AD9AE35008A4027 /* Buildings.sqlite */; };
+		BFF597F51AED58EC008B0907 /* exampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF597F41AED58EC008B0907 /* exampleViewController.m */; };
 		BFF637741ADBE775001F53D9 /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF637731ADBE775001F53D9 /* MainTableViewController.m */; };
 		BFF6377A1ADBF85D001F53D9 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF637791ADBF85D001F53D9 /* BaseTableViewController.m */; };
 		BFF6377D1ADBFA7A001F53D9 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF6377C1ADBFA7A001F53D9 /* DetailViewController.m */; };
 		BFF637801ADBFAE5001F53D9 /* ResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF6377F1ADBFAE5001F53D9 /* ResultsTableViewController.m */; };
 		BFF637821ADBFCFE001F53D9 /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFF637811ADBFCFE001F53D9 /* TableCell.xib */; };
+		BFFD5BCA1ADF10E400F29E54 /* CategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFFD5BC91ADF10E400F29E54 /* CategoryTableViewController.m */; };
+		BFFD5BCD1ADF189600F29E54 /* BuildingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFFD5BCC1ADF189600F29E54 /* BuildingsTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +70,10 @@
 		BF1385ED1AA4F6F80039BEA9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF1385EF1AA4F7020039BEA9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BF1385F11AA4F7170039BEA9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BF1F65821AE42CBD00A41C3B /* BuildingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingDetailViewController.h; sourceTree = "<group>"; };
+		BF1F65831AE42CBD00A41C3B /* BuildingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingDetailViewController.m; sourceTree = "<group>"; };
+		BF1F65851AE44A8D00A41C3B /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		BF1F65861AE44A8D00A41C3B /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		BF24F6B31A9E4F58008DABAB /* UKMaAPPIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UKMaAPPIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF24F6B71A9E4F58008DABAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF24F6B81A9E4F58008DABAB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -86,6 +95,8 @@
 		BFEAE69D1AD9B6B6008A4027 /* BuildingStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingStore.h; sourceTree = "<group>"; };
 		BFEAE69E1AD9B6B6008A4027 /* BuildingStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingStore.m; sourceTree = "<group>"; };
 		BFEAE6A01AD9BAB4008A4027 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		BFF597F31AED58EC008B0907 /* exampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exampleViewController.h; sourceTree = "<group>"; };
+		BFF597F41AED58EC008B0907 /* exampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exampleViewController.m; sourceTree = "<group>"; };
 		BFF637721ADBE775001F53D9 /* MainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableViewController.h; sourceTree = "<group>"; };
 		BFF637731ADBE775001F53D9 /* MainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableViewController.m; sourceTree = "<group>"; };
 		BFF637781ADBF85D001F53D9 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
@@ -95,6 +106,10 @@
 		BFF6377E1ADBFAE5001F53D9 /* ResultsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResultsTableViewController.h; path = ../ResultsTableViewController.h; sourceTree = "<group>"; };
 		BFF6377F1ADBFAE5001F53D9 /* ResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResultsTableViewController.m; path = ../ResultsTableViewController.m; sourceTree = "<group>"; };
 		BFF637811ADBFCFE001F53D9 /* TableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCell.xib; sourceTree = "<group>"; };
+		BFFD5BC81ADF10E300F29E54 /* CategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryTableViewController.h; sourceTree = "<group>"; };
+		BFFD5BC91ADF10E400F29E54 /* CategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryTableViewController.m; sourceTree = "<group>"; };
+		BFFD5BCB1ADF189600F29E54 /* BuildingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingsTableViewController.h; sourceTree = "<group>"; };
+		BFFD5BCC1ADF189600F29E54 /* BuildingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingsTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,12 +194,22 @@
 				BF24F6BD1A9E4F58008DABAB /* ViewController.h */,
 				BF24F6BE1A9E4F58008DABAB /* ViewController.m */,
 				BF24F6C01A9E4F58008DABAB /* Main.storyboard */,
-				BF24F6C31A9E4F58008DABAB /* Images.xcassets */,
-				BF24F6C51A9E4F58008DABAB /* LaunchScreen.xib */,
-				BFEAE6991AD9AD48008A4027 /* Building.h */,
-				BFEAE69A1AD9AD48008A4027 /* Building.m */,
+				BFF597F31AED58EC008B0907 /* exampleViewController.h */,
+				BFF597F41AED58EC008B0907 /* exampleViewController.m */,
+				BFFD5BC81ADF10E300F29E54 /* CategoryTableViewController.h */,
+				BFFD5BC91ADF10E400F29E54 /* CategoryTableViewController.m */,
+				BFFD5BCC1ADF189600F29E54 /* BuildingsTableViewController.m */,
+				BF1F65821AE42CBD00A41C3B /* BuildingDetailViewController.h */,
+				BFFD5BCB1ADF189600F29E54 /* BuildingsTableViewController.h */,
+				BF1F65831AE42CBD00A41C3B /* BuildingDetailViewController.m */,
+				BF1F65851AE44A8D00A41C3B /* WebViewController.h */,
+				BF1F65861AE44A8D00A41C3B /* WebViewController.m */,
 				BFEAE69D1AD9B6B6008A4027 /* BuildingStore.h */,
 				BFEAE69E1AD9B6B6008A4027 /* BuildingStore.m */,
+				BFEAE6991AD9AD48008A4027 /* Building.h */,
+				BFEAE69A1AD9AD48008A4027 /* Building.m */,
+				BF24F6C31A9E4F58008DABAB /* Images.xcassets */,
+				BF24F6C51A9E4F58008DABAB /* LaunchScreen.xib */,
 				BF24F6B61A9E4F58008DABAB /* Supporting Files */,
 				BFA65A821ACEE6CF004EF8FB /* Test.h */,
 				BFA65A831ACEE6CF004EF8FB /* Test.m */,
@@ -324,15 +349,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFEAE69B1AD9AD48008A4027 /* Building.m in Sources */,
+				BF1F65871AE44A8D00A41C3B /* WebViewController.m in Sources */,
+				BFFD5BCD1ADF189600F29E54 /* BuildingsTableViewController.m in Sources */,
 				BFF6377A1ADBF85D001F53D9 /* BaseTableViewController.m in Sources */,
+				BFF597F51AED58EC008B0907 /* exampleViewController.m in Sources */,
 				BFF6377D1ADBFA7A001F53D9 /* DetailViewController.m in Sources */,
 				BF24F6BF1A9E4F58008DABAB /* ViewController.m in Sources */,
 				BFF637801ADBFAE5001F53D9 /* ResultsTableViewController.m in Sources */,
 				BFF637741ADBE775001F53D9 /* MainTableViewController.m in Sources */,
 				BFA65A841ACEE6CF004EF8FB /* Test.m in Sources */,
+				BF1F65841AE42CBD00A41C3B /* BuildingDetailViewController.m in Sources */,
 				BF24F6BC1A9E4F58008DABAB /* AppDelegate.m in Sources */,
 				BF24F6B91A9E4F58008DABAB /* main.m in Sources */,
 				BFEAE69F1AD9B6B6008A4027 /* BuildingStore.m in Sources */,
+				BFFD5BCA1ADF10E400F29E54 /* CategoryTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

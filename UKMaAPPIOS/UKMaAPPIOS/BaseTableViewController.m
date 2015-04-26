@@ -36,8 +36,8 @@ NSString *const kTableCellNibName = @"TableCell";
     [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     NSString *priceString = [numberFormatter stringFromNumber:product.introPrice];
     
-    NSString *detailedStr = [NSString stringWithFormat:@"%@ | %@", priceString, [product.yearIntroduced stringValue]];
-    cell.detailTextLabel.text = detailedStr;*/
+    NSString *detailedStr = [NSString stringWithFormat:@"%@ | %@", priceString, [product.yearIntroduced stringValue]];*/
+    cell.detailTextLabel.text = @"";
 }
 
 
@@ -49,7 +49,7 @@ NSString *const kTableCellNibName = @"TableCell";
 }
 
 #pragma mark - Table view data source
-
+/*
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
@@ -60,7 +60,7 @@ NSString *const kTableCellNibName = @"TableCell";
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
     return 0;
-}
+}*/
 
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
