@@ -776,11 +776,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UKMaAPPIOS/ViewController.m"
-            timestampString = "451832676.334154"
+            timestampString = "451841809.792892"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "292"
-            endingLineNumber = "292"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
             landmarkName = "-mapView:didTapAtCoordinate:"
             landmarkType = "5">
          </BreakpointContent>
@@ -798,6 +798,22 @@
             startingLineNumber = "264"
             endingLineNumber = "264"
             landmarkName = "-updateSearchResultsForSearchController:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UKMaAPPIOS/ViewController.m"
+            timestampString = "451841809.792892"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
+            landmarkName = "-mapView:didTapAtCoordinate:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

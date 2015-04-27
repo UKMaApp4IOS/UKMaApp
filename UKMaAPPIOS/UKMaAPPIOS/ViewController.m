@@ -205,6 +205,7 @@
     marker.map = mapView_;
     
     searchedMarker = [[GMSMarker alloc] init];
+    tappedMarker = [[GMSMarker alloc] init];
     [mapView_ setSelectedMarker:marker];
     self.navigationItem.title = @"UKMA-APP";
 }
@@ -245,42 +246,10 @@
             searchedMarker.appearAnimation = kGMSMarkerAnimationPop;
             searchedMarker.map = mapView_;
             [mapView_ setSelectedMarker:searchedMarker];
+            [mapView_ animateToZoom:18];
             
         }
-    if(self.didTapBuilding){
-        tappedMarker.position = CLLocationCoordinate2DMake(self.TappedBuilding.buildingLatitude,self.TappedBuilding.buildingLongitude );
-        tappedMarker.title = self.TappedBuilding.buildingName;
-        NSString * snippitString = @"";
-        /*NSString *string1 = nil;
-         NSString *string2 = nil;
-         if([building.buildingType isEqual: @"NULL"]){
-         string1 = @"";
-         
-         }
-         else
-         {
-         string1 = [NSString stringWithFormat:@"Type: %@", building.buildingType];
-         }
-         if([building.buildingHours isEqual: @"NULL"]){
-         string2 = @"";
-         
-         }
-         else
-         {
-         string2 = [NSString stringWithFormat:@"Hours: %@", building.buildingHours];
-         }
-         snippitString = [NSString stringWithFormat:@"%@ \r %@", string1, string2];
-         */
-        
-        tappedMarker.snippet = snippitString;
-        tappedMarker.appearAnimation = kGMSMarkerAnimationPop;
-        tappedMarker.map = mapView_;
-        [mapView_ setSelectedMarker:tappedMarker];
-        //[mapView_ ];
-        self.didTapBuilding = false;
-    }else{
-        NSLog(@"dog");
-    }
+
     
 }
 
@@ -310,12 +279,54 @@
         }
         
     }
+    if(self.didTapBuilding){
+        //[mapView_ clear];
+        [mapView_ animateToLocation:CLLocationCoordinate2DMake(self.TappedBuilding.buildingLatitude, self.TappedBuilding.buildingLongitude)];
+        
+        tappedMarker.position = CLLocationCoordinate2DMake(self.TappedBuilding.buildingLatitude,self.TappedBuilding.buildingLongitude );
+        tappedMarker.title = self.TappedBuilding.buildingName;
+        NSString * snippitString = @"";
+        NSString *string1 = nil;
+         NSString *string2 = nil;
+         if([self.TappedBuilding.buildingType isEqual: @"NULL"]){
+         string1 = @"";
+         
+         }
+         else
+         {
+         string1 = [NSString stringWithFormat:@"Type: %@", self.TappedBuilding.buildingType];
+         }
+         if([self.TappedBuilding.buildingHours isEqual: @"NULL"]){
+         string2 = @"";
+         
+         }
+         else
+         {
+         string2 = [NSString stringWithFormat:@"Hours: %@", self.TappedBuilding.buildingHours];
+         }
+         snippitString = [NSString stringWithFormat:@"%@ \r %@", string1, string2];
+         
+        
+        tappedMarker.snippet = snippitString;
+        //tappedMarker.appearAnimation = kGMSMarkerAnimationPop;
+        tappedMarker.map = mapView_;
+        [mapView_ setSelectedMarker:tappedMarker];
+        //[mapView_ ];
+        //searchedMarker = nil;
+        self.didTapBuilding = false;
+    }else{
+        NSLog(@"dog");
+    }
     
     
     NSLog(@"%f, %f", coordinate.latitude, coordinate.longitude);
-    [self.view setNeedsDisplay];
+/*    [self.view setNeedsDisplay];
     [mapView_ setNeedsDisplay];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    if(self.didTapBuilding)
+    {
+        //[self viewDidLoad];
+        [self viewWillAppear:TRUE];
+    }*/
 }
 
 - (void)didReceiveMemoryWarning {
