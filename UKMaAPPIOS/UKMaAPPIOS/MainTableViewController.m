@@ -11,6 +11,7 @@
 #import "DetailViewController.h"
 #import "ResultsTableViewController.h"
 #import "Building.h"
+#import "ViewController.h"
 @interface MainTableViewController () <UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating>
 
 @property (nonatomic, strong) UISearchController *searchController;
@@ -50,7 +51,7 @@
 
 - (void)viewDidLoad {
     //[super viewDidLoad];
-    
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
     NSArray * BuildingsArray = [[BuildingStore defaultStore] allBuildings];
     [self openDB];
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM Buildings"];
@@ -149,6 +150,11 @@
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [self.searchController.searchBar becomeFirstResponder];
+}
+-(void) viewWillAppear:(BOOL)animated{
+    self.searchController.active = TRUE;
+    [self.searchController becomeFirstResponder];
 }
 
 
@@ -189,7 +195,13 @@
     // do something after the search controller is dismissed
 }
 
-
+- (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    ViewController * rootViewControllerPointer =  (ViewController*) (self.navigationController.viewControllers[0]);
+//    rootViewControllerPointer.isSearch = true;
+ //   rootViewControllerPointer.searchedBuilding = self.pickedBuilding;
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -237,6 +249,10 @@
      objectAtIndex:[indexPath row]] : self.resultsTableController.filteredBuildings[indexPath.row];
     
     NSLog(@"Cell Name CLicked = %@", selectedBuilding.buildingName);
+    ViewController * rootViewControllerPointer =  (ViewController*) (self.navigationController.viewControllers[0]);
+    rootViewControllerPointer.isSearch = true;
+    rootViewControllerPointer.searchedBuilding = selectedBuilding;
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 
@@ -258,6 +274,7 @@
     // hand over the filtered results to our search results table
     ResultsTableViewController *tableController = (ResultsTableViewController *)self.searchController.searchResultsController;
     tableController.filteredBuildings = searchResults;
+    //[self.searchController.searchBar becomeFirstResponder];
     [tableController.tableView reloadData];
 }
 

@@ -35,7 +35,7 @@ BuildingsTableViewController *categoryDetailViewController = nil;
 }
 
 - (void)viewDidLoad {
-    
+    self.navigationItem.title = @"Categories";
     NSArray * BuildingsArray = [[BuildingStore defaultStore] allBuildings];
     [self openDB];
     NSString *sql = [NSString stringWithFormat:@"SELECT DISTINCT Type FROM Buildings"];

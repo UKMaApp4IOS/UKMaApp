@@ -16,6 +16,7 @@
     sqlite3 *db;
 }
 @property (weak, nonatomic) IBOutlet UISearchBar *mapSearchBar;
+- (IBAction)searchButton:(id)sender;
 -(NSString*) filePath;
 - (void) openDB;
 

@@ -37,7 +37,7 @@ BuildingDetailViewController *buildingDetailViewController = nil;
 }
 
 - (void)viewDidLoad {
-    
+    self.navigationItem.title = self.pickedCategory;
     NSArray * BuildingsArray = [[BuildingStore defaultStore] allBuildings];
     [self openDB];
     NSString *sql = [NSString stringWithFormat:@"SELECT Name,NickName, Latitude, Longitude, Url, Type, Hours FROM Buildings WHERE Type = '%@'", self.pickedCategory];

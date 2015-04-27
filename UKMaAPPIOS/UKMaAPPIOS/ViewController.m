@@ -9,14 +9,17 @@
 #import "ViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import <CoreLocation/CoreLocation.h>
-@interface ViewController () <UISearchBarDelegate, UISearchResultsUpdating>
+@interface ViewController () <UISearchBarDelegate, UISearchResultsUpdating, GMSMapViewDelegate >
 @property (strong, nonatomic) NSArray *filteredList;
 @property (strong, nonatomic) UISearchController *searchController;
+@property (strong, nonatomic) Building *TappedBuilding;
+@property (nonatomic) bool didTapBuilding;
 @end
 
 @implementation ViewController{
     GMSMapView *mapView_;
     GMSMarker *searchedMarker;
+    GMSMarker *tappedMarker;
 }
 
 -(NSString *) filePath {
@@ -30,6 +33,7 @@
     return myFile;
     
 }
+
 -(void) openDB{
     if(sqlite3_open([[self filePath] UTF8String], &db) != SQLITE_OK){
         sqlite3_close(db);
@@ -107,6 +111,7 @@
                                                BuildingHours:(NSString *) field7Str];
             NSLog(@"Building Name : %@  BuildingNickName: %@, BuildingLat: %f, BuildingLong: %f, building URL: %@, buildingType: %@, BuildingHours: %@ ", field1Str, field2Str, field3, field4, field5Str, field6Str, field7Str);
             //NSLog(@"Building Name :   Rarity: ");
+    
             
         }
     }
@@ -177,7 +182,7 @@
     //self.view.addSubview(mapView_);
     mapView_.mapType = kGMSTypeNormal;
 
-    
+    mapView_.delegate = self;
     
     
     
@@ -201,7 +206,7 @@
     
     searchedMarker = [[GMSMarker alloc] init];
     [mapView_ setSelectedMarker:marker];
-    
+    self.navigationItem.title = @"UKMA-APP";
 }
 - (void) viewWillAppear:(BOOL)animated{
     if(self.isSearch)
@@ -240,14 +245,77 @@
             searchedMarker.appearAnimation = kGMSMarkerAnimationPop;
             searchedMarker.map = mapView_;
             [mapView_ setSelectedMarker:searchedMarker];
-        }   
+            
+        }
+    if(self.didTapBuilding){
+        tappedMarker.position = CLLocationCoordinate2DMake(self.TappedBuilding.buildingLatitude,self.TappedBuilding.buildingLongitude );
+        tappedMarker.title = self.TappedBuilding.buildingName;
+        NSString * snippitString = @"";
+        /*NSString *string1 = nil;
+         NSString *string2 = nil;
+         if([building.buildingType isEqual: @"NULL"]){
+         string1 = @"";
+         
+         }
+         else
+         {
+         string1 = [NSString stringWithFormat:@"Type: %@", building.buildingType];
+         }
+         if([building.buildingHours isEqual: @"NULL"]){
+         string2 = @"";
+         
+         }
+         else
+         {
+         string2 = [NSString stringWithFormat:@"Hours: %@", building.buildingHours];
+         }
+         snippitString = [NSString stringWithFormat:@"%@ \r %@", string1, string2];
+         */
+        
+        tappedMarker.snippet = snippitString;
+        tappedMarker.appearAnimation = kGMSMarkerAnimationPop;
+        tappedMarker.map = mapView_;
+        [mapView_ setSelectedMarker:tappedMarker];
+        //[mapView_ ];
+        self.didTapBuilding = false;
+    }else{
+        NSLog(@"dog");
+    }
+    
 }
 
 - (void) viewWillDisappear:(BOOL)animated{
     mapView_.selectedMarker = nil;
 }
 - (void) mapView: (GMSMapView*) mapVIew didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
-    ;
+    NSLog(@"cat");
+    Building * building = nil;
+    double area = 0.0003;
+    NSArray *buildings = [[BuildingStore defaultStore] allBuildings];
+    double buildingLatitude;
+    double buildingLongitude;
+    self.didTapBuilding = false;
+    for (int i=0; i< buildings.count; i++  ) {
+        buildingLatitude = [buildings[i] buildingLatitude];
+        buildingLongitude = [buildings[i] buildingLongitude];
+        if((coordinate.latitude < buildingLatitude + area )&& (coordinate.latitude > buildingLatitude - area) && (coordinate.longitude < buildingLongitude + area )&& (coordinate.longitude > buildingLongitude - area)
+           )
+        {
+            self.TappedBuilding = buildings[i];
+            area = area - 0.0002;
+            NSLog(@"hahayes");
+            self.didTapBuilding = TRUE;
+            
+            
+        }
+        
+    }
+    
+    
+    NSLog(@"%f, %f", coordinate.latitude, coordinate.longitude);
+    [self.view setNeedsDisplay];
+    [mapView_ setNeedsDisplay];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

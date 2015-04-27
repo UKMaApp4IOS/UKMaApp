@@ -11,6 +11,7 @@
 #import "ResultsTableViewController.h"
 #import "Building.h"
 @interface exampleViewController ()<UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating>
+@property (weak, nonatomic) IBOutlet UIView *searchSubView;
 @property (nonatomic, strong) UISearchController *searchController;
 
 // our secondary search results table view
@@ -18,6 +19,10 @@
 @end
 
 @implementation exampleViewController
+- (IBAction)searchButton:(id)sender {
+    
+}
+
 -(NSString *) filePath {
     // NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     //return [[paths objectAtIndex: 0] stringByAppendingPathComponent:@"Warframe.sqlite"];
@@ -116,8 +121,8 @@
     _searchController = [[UISearchController alloc] initWithSearchResultsController:self.resultsTableController];
     self.searchController.searchResultsUpdater = self;
     [self.searchController.searchBar sizeToFit];
-    self.mapSearchBar = self.searchController.searchBar;
-    
+    //self.mapSearchBar = self.searchController.searchBar;
+    self.mapSearchBar.delegate = self;
     // we want to be the delegate for our filtered table so didSelectRowAtIndexPath is called for both tables
     self.resultsTableController.tableView.delegate = self.resultsTableController;
     self.searchController.delegate = self;
@@ -140,6 +145,16 @@
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+}
+-(void) viewWillAppear:(BOOL)animated{
+ //   self.searchController.searchBar
+}
+-(void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+    self.searchController.active = YES;
+}
+
+-(void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    NSLog(@"cat545");
 }
 #pragma mark - UISearchControllerDelegate
 

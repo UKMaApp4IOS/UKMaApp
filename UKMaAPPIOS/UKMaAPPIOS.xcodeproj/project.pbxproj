@@ -34,7 +34,7 @@
 		BFEAE69B1AD9AD48008A4027 /* Building.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEAE69A1AD9AD48008A4027 /* Building.m */; };
 		BFEAE69F1AD9B6B6008A4027 /* BuildingStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEAE69E1AD9B6B6008A4027 /* BuildingStore.m */; };
 		BFEAE6A11AD9BAB4008A4027 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEAE6A01AD9BAB4008A4027 /* libsqlite3.dylib */; };
-		BFEAE6A21AD9BB3B008A4027 /* Buildings.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = BFEAE69C1AD9AE35008A4027 /* Buildings.sqlite */; };
+		BFF51ABE1AEE71AB00FAB1C8 /* Buildings.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = BFF51ABD1AEE717600FAB1C8 /* Buildings.sqlite */; };
 		BFF597F51AED58EC008B0907 /* exampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF597F41AED58EC008B0907 /* exampleViewController.m */; };
 		BFF637741ADBE775001F53D9 /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF637731ADBE775001F53D9 /* MainTableViewController.m */; };
 		BFF6377A1ADBF85D001F53D9 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF637791ADBF85D001F53D9 /* BaseTableViewController.m */; };
@@ -91,10 +91,10 @@
 		BFA65A831ACEE6CF004EF8FB /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
 		BFEAE6991AD9AD48008A4027 /* Building.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Building.h; sourceTree = "<group>"; };
 		BFEAE69A1AD9AD48008A4027 /* Building.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Building.m; sourceTree = "<group>"; };
-		BFEAE69C1AD9AE35008A4027 /* Buildings.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = Buildings.sqlite; path = ../Buildings.sqlite; sourceTree = "<group>"; };
 		BFEAE69D1AD9B6B6008A4027 /* BuildingStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingStore.h; sourceTree = "<group>"; };
 		BFEAE69E1AD9B6B6008A4027 /* BuildingStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingStore.m; sourceTree = "<group>"; };
 		BFEAE6A01AD9BAB4008A4027 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		BFF51ABD1AEE717600FAB1C8 /* Buildings.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Buildings.sqlite; sourceTree = "<group>"; };
 		BFF597F31AED58EC008B0907 /* exampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exampleViewController.h; sourceTree = "<group>"; };
 		BFF597F41AED58EC008B0907 /* exampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exampleViewController.m; sourceTree = "<group>"; };
 		BFF637721ADBE775001F53D9 /* MainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableViewController.h; sourceTree = "<group>"; };
@@ -188,7 +188,6 @@
 				BFF637731ADBE775001F53D9 /* MainTableViewController.m */,
 				BFF6377E1ADBFAE5001F53D9 /* ResultsTableViewController.h */,
 				BFF6377F1ADBFAE5001F53D9 /* ResultsTableViewController.m */,
-				BFEAE69C1AD9AE35008A4027 /* Buildings.sqlite */,
 				BF24F6BA1A9E4F58008DABAB /* AppDelegate.h */,
 				BF24F6BB1A9E4F58008DABAB /* AppDelegate.m */,
 				BF24F6BD1A9E4F58008DABAB /* ViewController.h */,
@@ -208,6 +207,7 @@
 				BFEAE69E1AD9B6B6008A4027 /* BuildingStore.m */,
 				BFEAE6991AD9AD48008A4027 /* Building.h */,
 				BFEAE69A1AD9AD48008A4027 /* Building.m */,
+				BFF51ABD1AEE717600FAB1C8 /* Buildings.sqlite */,
 				BF24F6C31A9E4F58008DABAB /* Images.xcassets */,
 				BF24F6C51A9E4F58008DABAB /* LaunchScreen.xib */,
 				BF24F6B61A9E4F58008DABAB /* Supporting Files */,
@@ -325,7 +325,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFEAE6A21AD9BB3B008A4027 /* Buildings.sqlite in Resources */,
+				BFF51ABE1AEE71AB00FAB1C8 /* Buildings.sqlite in Resources */,
 				BF24F6C21A9E4F58008DABAB /* Main.storyboard in Resources */,
 				BF24F6C71A9E4F58008DABAB /* LaunchScreen.xib in Resources */,
 				BF24F6C41A9E4F58008DABAB /* Images.xcassets in Resources */,
