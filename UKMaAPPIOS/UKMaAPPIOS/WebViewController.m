@@ -5,7 +5,10 @@
 //  Created by Patrick Good on 4/19/15.
 //  Copyright (c) 2015 Patrick Good. All rights reserved.
 //
-
+/*
+ Abstract:
+ File responsible for controlling the webView that is segued with the building detail view controller. Note many of the the functions for the webview are done in the storyboard.
+ */
 #import "WebViewController.h"
 
 @interface WebViewController ()
@@ -16,7 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //NSLog(@"%@",self.url);
+    self.title = @"";
+
     NSURL * url = [NSURL URLWithString:self.url];
     NSURLRequest * request = [NSURLRequest requestWithURL:url ];
     [self.webView loadRequest:request];

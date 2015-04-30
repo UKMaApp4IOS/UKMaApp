@@ -5,7 +5,10 @@
 //  Created by Patrick Good on 4/11/15.
 //  Copyright (c) 2015 Patrick Good. All rights reserved.
 //
-
+/*
+ Abstract:
+ Class file responsible for creating an singleton array meaning only one instance of the array exists. Responsible for adding a "store" of building objects as an array. Responsible for adding building objects to the array.
+ */
 #import "BuildingStore.h"
 #import "Building.h"
 static BuildingStore *defaultStore = nil;

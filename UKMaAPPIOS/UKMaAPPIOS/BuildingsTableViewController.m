@@ -5,6 +5,10 @@
 //  Created by Patrick Good on 4/15/15.
 //  Copyright (c) 2015 Patrick Good. All rights reserved.
 //
+/*
+ Abstract:
+ File responsible for displaying the buildings objects that were sorted by their category in a table view.
+ */
 
 #import "BuildingsTableViewController.h"
 #import "BuildingDetailViewController.h"
@@ -16,9 +20,7 @@
 @implementation BuildingsTableViewController
 BuildingDetailViewController *buildingDetailViewController = nil;
 
--(NSString *) filePath {
-    // NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    //return [[paths objectAtIndex: 0] stringByAppendingPathComponent:@"Warframe.sqlite"];
+-(NSString *) filePath {//Get File path to database
     NSBundle * mainBundle = [NSBundle mainBundle];
     NSLog(@"%@", mainBundle);
     NSString * myFile = [mainBundle pathForResource: @"Buildings" ofType: @"sqlite"];
@@ -26,7 +28,7 @@ BuildingDetailViewController *buildingDetailViewController = nil;
     return myFile;
     
 }
--(void) openDB{
+-(void) openDB{// Open Database
     if(sqlite3_open([[self filePath] UTF8String], &db) != SQLITE_OK){
         sqlite3_close(db);
         NSAssert(0, @"Database failed to open");
@@ -37,15 +39,17 @@ BuildingDetailViewController *buildingDetailViewController = nil;
 }
 
 - (void)viewDidLoad {
-    self.navigationItem.title = self.pickedCategory;
-    NSArray * BuildingsArray = [[BuildingStore defaultStore] allBuildings];
+    self.navigationItem.title = self.pickedCategory;// Set title of navigation itme to the name of the category selected.
+    //NSArray * BuildingsArray = [[BuildingStore defaultStore] allBuildings];
     [self openDB];
+    //sqllight query.
     NSString *sql = [NSString stringWithFormat:@"SELECT Name,NickName, Latitude, Longitude, Url, Type, Hours FROM Buildings WHERE Type = '%@'", self.pickedCategory];
     //sql = [sql stringByAppendingString:self.pickedCategory];
     sqlite3_stmt *statement;
     if(sqlite3_prepare_v2(db, [sql UTF8String], -1, &statement, nil) ==SQLITE_OK)
     {
-        int i = 0;
+        //Load information into the BuildingStore Array.
+        //int i = 0;
         while(sqlite3_step(statement)==SQLITE_ROW){
             NSString *field2Str;
             NSString *field5Str;
@@ -102,13 +106,13 @@ BuildingDetailViewController *buildingDetailViewController = nil;
                                                  BuildingUrl:(NSString *) field5Str
                                                 BuildingType:(NSString *) field6Str
                                                BuildingHours:(NSString *) field7Str];
-            NSLog(@"Building Name : %@  BuildingNickName: %@, BuildingLat: %f, BuildingLong: %f, building URL: %@, buildingType: %@, BuildingHours: %@ ", field1Str, field2Str, field3, field4, field5Str, field6Str, field7Str);
+            //NSLog(@"Building Name : %@  BuildingNickName: %@, BuildingLat: %f, BuildingLong: %f, building URL: %@, buildingType: %@, BuildingHours: %@ ", field1Str, field2Str, field3, field4, field5Str, field6Str, field7Str);
             //NSLog(@"Building Name :   Rarity: ");
             
         }
     }
-    //NSLog(@"haha, %@", self.pickedCategory );
     
+    sqlite3_close(db);
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -134,11 +138,7 @@ BuildingDetailViewController *buildingDetailViewController = nil;
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-     /*// Create an instance of UITableViewCell, with default appearance
-     UITableViewCell *cell =
-     [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-     reuseIdentifier:@"UITableViewCell"] ;
-     */
+
     // Check for a reusable cell first, use that if it exists
     UITableViewCell *cell =
     [tableView dequeueReusableCellWithIdentifier:@"UIBuildingViewCell"];
@@ -159,15 +159,8 @@ BuildingDetailViewController *buildingDetailViewController = nil;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     Building *selectedBuilding = [[[BuildingStore defaultStore] allBuildings] objectAtIndex:[indexPath row]];
-    /*
-     DetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
-     detailViewController.building = selectedBuilding; // hand off the current product to the detail view controller
-     
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     
-     // note: should not be necessary but current iOS 8.0 bug (seed 4) requires it
-     [tableView deselectRowAtIndexPath:indexPath animated:NO];*/
-    NSLog(@"Name: %@, URL: %@, Hours: %@", selectedBuilding.buildingName, selectedBuilding.buildingUrl, selectedBuilding.buildingHours);
+    
+    // Testing NSLog(@"Name: %@, URL: %@, Hours: %@", selectedBuilding.buildingName, selectedBuilding.buildingUrl, selectedBuilding.buildingHours);
     buildingDetailViewController.pickedBuilding = selectedBuilding;
 }
 /*
@@ -229,8 +222,8 @@ BuildingDetailViewController *buildingDetailViewController = nil;
         //NSLog(@"New view controller was pushed");
     } else if ([viewControllers indexOfObject:self] == NSNotFound) {
         // View is disappearing because it was popped from the stack
-        //NSLog(@"View controller was popped");
-        [[BuildingStore defaultStore] clearStore];
+        
+        [[BuildingStore defaultStore] clearStore];// Remove all items in store array.
     }
     
 }

@@ -5,60 +5,6 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Example View Controller-->
-        <scene sceneID="Byd-Gh-okw">
-            <objects>
-                <viewController id="PcG-Nn-zAG" customClass="exampleViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="djz-xW-yNf"/>
-                        <viewControllerLayoutGuide type="bottom" id="npS-fN-DgL"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="GqR-Al-RS1">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BaV-wt-R5X">
-                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                                <subviews>
-                                    <searchBar contentMode="redraw" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sPG-3c-ad5">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <scopeButtonTitles>
-                                            <string>rename</string>
-                                            <string>Title</string>
-                                        </scopeButtonTitles>
-                                    </searchBar>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="0.1728794646" blue="0.98324238050000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="sPG-3c-ad5" secondAttribute="width" id="PX9-Q1-Ujy"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="BaV-wt-R5X" firstAttribute="top" secondItem="djz-xW-yNf" secondAttribute="bottom" id="DRb-yF-DGw"/>
-                            <constraint firstAttribute="width" secondItem="BaV-wt-R5X" secondAttribute="width" id="Nav-lP-jUT"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="Sdj-yU-Cwh">
-                        <nil key="title"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="UTA-aA-hRs">
-                            <connections>
-                                <action selector="searchButton:" destination="PcG-Nn-zAG" id="yVp-BM-gCT"/>
-                                <segue destination="Hpb-dk-6CD" kind="show" id="pJE-bU-G4d"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="mapSearchBar" destination="sPG-3c-ad5" id="AFT-ld-J05"/>
-                        <outlet property="searchSubView" destination="BaV-wt-R5X" id="BQs-ZQ-KEQ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Yyw-bn-mtU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1420" y="1091"/>
-        </scene>
         <!--Main Table View Controller-->
         <scene sceneID="I4a-zj-XGW">
             <objects>
@@ -384,7 +330,4 @@
         <image name="Previous" width="32" height="32"/>
         <image name="search" width="22" height="22"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="vLg-lr-u20"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -7,7 +7,7 @@
 //
 
 
-// test comments
+// Abstract: THis is the class files that get called when App starts.
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
@@ -17,6 +17,6 @@
     CLPlacemark *placemark;
 }
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) CLLocationManager *locationManager;// Handles devices location information.
 @end
 

@@ -35,10 +35,8 @@
 		BFEAE69F1AD9B6B6008A4027 /* BuildingStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEAE69E1AD9B6B6008A4027 /* BuildingStore.m */; };
 		BFEAE6A11AD9BAB4008A4027 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEAE6A01AD9BAB4008A4027 /* libsqlite3.dylib */; };
 		BFF51ABE1AEE71AB00FAB1C8 /* Buildings.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = BFF51ABD1AEE717600FAB1C8 /* Buildings.sqlite */; };
-		BFF597F51AED58EC008B0907 /* exampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF597F41AED58EC008B0907 /* exampleViewController.m */; };
 		BFF637741ADBE775001F53D9 /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF637731ADBE775001F53D9 /* MainTableViewController.m */; };
 		BFF6377A1ADBF85D001F53D9 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF637791ADBF85D001F53D9 /* BaseTableViewController.m */; };
-		BFF6377D1ADBFA7A001F53D9 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF6377C1ADBFA7A001F53D9 /* DetailViewController.m */; };
 		BFF637801ADBFAE5001F53D9 /* ResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF6377F1ADBFAE5001F53D9 /* ResultsTableViewController.m */; };
 		BFF637821ADBFCFE001F53D9 /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFF637811ADBFCFE001F53D9 /* TableCell.xib */; };
 		BFFD5BCA1ADF10E400F29E54 /* CategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFFD5BC91ADF10E400F29E54 /* CategoryTableViewController.m */; };
@@ -95,14 +93,10 @@
 		BFEAE69E1AD9B6B6008A4027 /* BuildingStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingStore.m; sourceTree = "<group>"; };
 		BFEAE6A01AD9BAB4008A4027 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		BFF51ABD1AEE717600FAB1C8 /* Buildings.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Buildings.sqlite; sourceTree = "<group>"; };
-		BFF597F31AED58EC008B0907 /* exampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exampleViewController.h; sourceTree = "<group>"; };
-		BFF597F41AED58EC008B0907 /* exampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exampleViewController.m; sourceTree = "<group>"; };
 		BFF637721ADBE775001F53D9 /* MainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableViewController.h; sourceTree = "<group>"; };
 		BFF637731ADBE775001F53D9 /* MainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableViewController.m; sourceTree = "<group>"; };
 		BFF637781ADBF85D001F53D9 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		BFF637791ADBF85D001F53D9 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
-		BFF6377B1ADBFA7A001F53D9 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = ../DetailViewController.h; sourceTree = "<group>"; };
-		BFF6377C1ADBFA7A001F53D9 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = ../DetailViewController.m; sourceTree = "<group>"; };
 		BFF6377E1ADBFAE5001F53D9 /* ResultsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResultsTableViewController.h; path = ../ResultsTableViewController.h; sourceTree = "<group>"; };
 		BFF6377F1ADBFAE5001F53D9 /* ResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResultsTableViewController.m; path = ../ResultsTableViewController.m; sourceTree = "<group>"; };
 		BFF637811ADBFCFE001F53D9 /* TableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCell.xib; sourceTree = "<group>"; };
@@ -182,8 +176,6 @@
 			children = (
 				BFF637781ADBF85D001F53D9 /* BaseTableViewController.h */,
 				BFF637791ADBF85D001F53D9 /* BaseTableViewController.m */,
-				BFF6377B1ADBFA7A001F53D9 /* DetailViewController.h */,
-				BFF6377C1ADBFA7A001F53D9 /* DetailViewController.m */,
 				BFF637721ADBE775001F53D9 /* MainTableViewController.h */,
 				BFF637731ADBE775001F53D9 /* MainTableViewController.m */,
 				BFF6377E1ADBFAE5001F53D9 /* ResultsTableViewController.h */,
@@ -193,13 +185,11 @@
 				BF24F6BD1A9E4F58008DABAB /* ViewController.h */,
 				BF24F6BE1A9E4F58008DABAB /* ViewController.m */,
 				BF24F6C01A9E4F58008DABAB /* Main.storyboard */,
-				BFF597F31AED58EC008B0907 /* exampleViewController.h */,
-				BFF597F41AED58EC008B0907 /* exampleViewController.m */,
 				BFFD5BC81ADF10E300F29E54 /* CategoryTableViewController.h */,
 				BFFD5BC91ADF10E400F29E54 /* CategoryTableViewController.m */,
+				BFFD5BCB1ADF189600F29E54 /* BuildingsTableViewController.h */,
 				BFFD5BCC1ADF189600F29E54 /* BuildingsTableViewController.m */,
 				BF1F65821AE42CBD00A41C3B /* BuildingDetailViewController.h */,
-				BFFD5BCB1ADF189600F29E54 /* BuildingsTableViewController.h */,
 				BF1F65831AE42CBD00A41C3B /* BuildingDetailViewController.m */,
 				BF1F65851AE44A8D00A41C3B /* WebViewController.h */,
 				BF1F65861AE44A8D00A41C3B /* WebViewController.m */,
@@ -352,8 +342,6 @@
 				BF1F65871AE44A8D00A41C3B /* WebViewController.m in Sources */,
 				BFFD5BCD1ADF189600F29E54 /* BuildingsTableViewController.m in Sources */,
 				BFF6377A1ADBF85D001F53D9 /* BaseTableViewController.m in Sources */,
-				BFF597F51AED58EC008B0907 /* exampleViewController.m in Sources */,
-				BFF6377D1ADBFA7A001F53D9 /* DetailViewController.m in Sources */,
 				BF24F6BF1A9E4F58008DABAB /* ViewController.m in Sources */,
 				BFF637801ADBFAE5001F53D9 /* ResultsTableViewController.m in Sources */,
 				BFF637741ADBE775001F53D9 /* MainTableViewController.m in Sources */,

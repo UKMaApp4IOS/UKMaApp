@@ -6,9 +6,12 @@
 //  Copyright (c) 2015 Patrick Good. All rights reserved.
 //
 
+/*
+ Abstract:
+ Class file to implement the MainTableView for the search function. This controller is the first table view the users see after clicking on the search button in the app. It loads, stores, and displayes the building information into a table view. This controller is also resposible for UISearchController protocols, and is the delegate and datasource, updatesource for the searched data.
+ 
+ */
 #import "MainTableViewController.h"
-
-#import "DetailViewController.h"
 #import "ResultsTableViewController.h"
 #import "Building.h"
 #import "ViewController.h"
@@ -18,7 +21,7 @@
 
 // our secondary search results table view
 @property (nonatomic, strong) ResultsTableViewController *resultsTableController;
-
+@property (nonatomic) NSMutableArray * searchedBuildingResults;
 
 @end
 
@@ -27,9 +30,8 @@
 
 
 @implementation MainTableViewController
+//Gets filepath to database.
 -(NSString *) filePath {
-    // NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    //return [[paths objectAtIndex: 0] stringByAppendingPathComponent:@"Warframe.sqlite"];
     NSBundle * mainBundle = [NSBundle mainBundle];
     NSLog(@"%@", mainBundle);
     NSString * myFile = [mainBundle pathForResource: @"Buildings" ofType: @"sqlite"];
@@ -37,6 +39,7 @@
     return myFile;
 
 }
+//Opens database
 -(void) openDB{
     if(sqlite3_open([[self filePath] UTF8String], &db) != SQLITE_OK){
         sqlite3_close(db);
@@ -48,17 +51,15 @@
 }
 
 
-
+//Called when screen is loaded into view.
 - (void)viewDidLoad {
-    //[super viewDidLoad];
+    [[BuildingStore defaultStore] clearStore];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
-    NSArray * BuildingsArray = [[BuildingStore defaultStore] allBuildings];
     [self openDB];
-    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM Buildings"];
+    NSString *sql = [NSString stringWithFormat:@"SELECT Name,NickName, Latitude, Longitude, Url, Type, Hours FROM Buildings"];
     sqlite3_stmt *statement;
     if(sqlite3_prepare_v2(db, [sql UTF8String], -1, &statement, nil) ==SQLITE_OK)
     {
-        int i = 0;
         while(sqlite3_step(statement)==SQLITE_ROW){
             NSString *field2Str;
             NSString *field5Str;
@@ -75,34 +76,35 @@
                 field2Str = [[NSString alloc] initWithUTF8String:field2];
             }
             
-            double field3 = (double) sqlite3_column_double(statement,1);
-//            double field3Str = [[double alloc] initWithUTF8String:field3];
-            double field4 = (double) sqlite3_column_double(statement,1);
-//            double *field4Str = [[NSString alloc] initWithUTF8String:field4];
-            char *field5 = (char *) sqlite3_column_text(statement,1);
+            double field3 = (double) sqlite3_column_double(statement,2);
+            //            double field3Str = [[double alloc] initWithUTF8String:field3];
+            double field4 = (double) sqlite3_column_double(statement,3);
+            //            double *field4Str = [[NSString alloc] initWithUTF8String:field4];
+            char *field5 = (char *) sqlite3_column_text(statement,4);
             if(field5 == NULL)
             {
                 field5Str = @"NULL";
             }
             else{
-                field5Str = [[NSString alloc] initWithUTF8String:field2];
+                field5Str = [[NSString alloc] initWithUTF8String:field5];
             }
-            char *field6 = (char *) sqlite3_column_text(statement,1);
+            char *field6 = (char *) sqlite3_column_text(statement,5);
             if(field6 == NULL)
             {
                 field6Str = @"NULL";
             }
             else{
-                field6Str = [[NSString alloc] initWithUTF8String:field2];
+                field6Str = [[NSString alloc] initWithUTF8String:field6];
             }
-            char *field7 = (char *) sqlite3_column_text(statement,1);
+            char *field7 = (char *) sqlite3_column_text(statement,6);
             if(field7 == NULL)
             {
                 field7Str = @"NULL";
             }
             else{
-                field7Str = [[NSString alloc] initWithUTF8String:field2];
+                field7Str = [[NSString alloc] initWithUTF8String:field7];
             }
+            
             
             
             
@@ -115,9 +117,7 @@
                                                  BuildingUrl:(NSString *) field5Str
                                                 BuildingType:(NSString *) field6Str
                                                BuildingHours:(NSString *) field7Str];
-            NSLog(@"Building Name : %@  BuildingNickName: %i", field1Str, i++);
-            //NSLog(@"Building Name :   Rarity: ");
-            
+                        
         }
     }
     [super viewDidLoad];
@@ -141,7 +141,7 @@
     self.definesPresentationContext = YES;  // know where you want UISearchController to be displayed
     
     
-    //sqlite3_close(db);
+    sqlite3_close(db);
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -162,7 +162,13 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
-    NSLog(@"cat");
+    ViewController * rootViewControllerPointer =  (ViewController*) (self.navigationController.viewControllers[0]);
+    rootViewControllerPointer.isSearch = true;
+
+    rootViewControllerPointer.searchedBuildingResults = self.searchedBuildingResults;
+    [[BuildingStore defaultStore] clearStore];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
 }
 
 
@@ -196,9 +202,7 @@
 }
 
 - (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar{
-    ViewController * rootViewControllerPointer =  (ViewController*) (self.navigationController.viewControllers[0]);
-//    rootViewControllerPointer.isSearch = true;
- //   rootViewControllerPointer.searchedBuilding = self.pickedBuilding;
+    [[BuildingStore defaultStore] clearStore];
     [self.navigationController popToRootViewControllerAnimated:YES];
     
 }
@@ -224,9 +228,6 @@
 
 #pragma mark - UITableViewDelegate
 
-/*- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.products.count;
-}*/
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = (UITableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
@@ -248,10 +249,12 @@
     [[[BuildingStore defaultStore] allBuildings]
      objectAtIndex:[indexPath row]] : self.resultsTableController.filteredBuildings[indexPath.row];
     
-    NSLog(@"Cell Name CLicked = %@", selectedBuilding.buildingName);
+    NSLog(@"Cell Name CLicked = %@, Latitdue = %f", selectedBuilding.buildingName, selectedBuilding.buildingLongitude);
     ViewController * rootViewControllerPointer =  (ViewController*) (self.navigationController.viewControllers[0]);
     rootViewControllerPointer.isSearch = true;
-    rootViewControllerPointer.searchedBuilding = selectedBuilding;
+    NSMutableArray * tempArray = [NSMutableArray arrayWithObject:selectedBuilding];
+    rootViewControllerPointer.searchedBuildingResults = tempArray;
+    [[BuildingStore defaultStore] clearStore];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
@@ -260,20 +263,38 @@
 
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
     // update the filtered array based on the search text
-    
-    // Remove all objects from the filtered search array
-    //[self.filteredCandyArray removeAllObjects];
-    
+
     // Filter the array using NSPredicate
     NSString *searchText = searchController.searchBar.text;
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.buildingName contains[c] %@",searchText];
     NSArray *tempArray =  [[[[BuildingStore defaultStore] allBuildings] mutableCopy] filteredArrayUsingPredicate:predicate];
+    //Temp array is to store objects that match search string with building name.
+    NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"SELF.buildingNickName contains[c] %@",searchText];
+    NSArray *tempArray2 = [[[[BuildingStore defaultStore] allBuildings] mutableCopy] filteredArrayUsingPredicate:predicate2];
+    //tempArray2  is to store objects that match search string with buidling Nick Name.
+    NSPredicate *predicate3 = [NSPredicate predicateWithFormat:@"SELF.buildingType contains[c] %@",searchText];
+    NSArray *tempArray3 = [[[[BuildingStore defaultStore] allBuildings] mutableCopy] filteredArrayUsingPredicate:predicate3];
+    //tempArray3 is to store objects that match search string with building categories/types.
+    //Used sets to join arrays together and remove duplicate objects.
+    NSSet *firstSet= [NSSet setWithArray:tempArray];
+    NSSet *secondSet= [NSSet setWithArray:tempArray2];
+    NSSet *thirdSet = [NSSet setWithArray:tempArray3];
     
-
-    NSArray * searchResults = [NSMutableArray arrayWithArray:tempArray];
+    NSMutableSet *unionFirstSecondSet=[NSMutableSet new];
+    [unionFirstSecondSet unionSet:firstSet];
+    [unionFirstSecondSet unionSet:secondSet];
+    
+    NSMutableSet *unionFirstSecondThirdSet=[NSMutableSet new];
+    [unionFirstSecondThirdSet unionSet:unionFirstSecondSet];
+    [unionFirstSecondThirdSet unionSet:thirdSet];
+    
+    self.searchedBuildingResults = [NSMutableArray array];
+    
+    [self.searchedBuildingResults addObjectsFromArray:[unionFirstSecondThirdSet allObjects]];
+    
     // hand over the filtered results to our search results table
     ResultsTableViewController *tableController = (ResultsTableViewController *)self.searchController.searchResultsController;
-    tableController.filteredBuildings = searchResults;
+    tableController.filteredBuildings = self.searchedBuildingResults;
     //[self.searchController.searchBar becomeFirstResponder];
     [tableController.tableView reloadData];
 }

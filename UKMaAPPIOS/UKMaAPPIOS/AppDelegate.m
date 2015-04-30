@@ -5,7 +5,7 @@
 //  Created by Patrick Good on 2/25/15.
 //  Copyright (c) 2015 Patrick Good. All rights reserved.
 //
-
+//Abstract:: This is the files that get called when app starts. This class is also the Location manager delagate.
 #import "AppDelegate.h"
 #import <GoogleMaps/GoogleMaps.h>
 

@@ -5,6 +5,10 @@
 //  Created by Patrick Good on 4/15/15.
 //  Copyright (c) 2015 Patrick Good. All rights reserved.
 //
+/*
+ Abstract:
+ File responsible for displaying the categories that are listed in the file.
+ */
 
 #import "CategoryTableViewController.h"
 #import "BuildingsTableViewController.h"
@@ -15,8 +19,6 @@
 @implementation CategoryTableViewController
 BuildingsTableViewController *categoryDetailViewController = nil;
 -(NSString *) filePath {
-    // NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    //return [[paths objectAtIndex: 0] stringByAppendingPathComponent:@"Warframe.sqlite"];
     NSBundle * mainBundle = [NSBundle mainBundle];
     NSLog(@"%@", mainBundle);
     NSString * myFile = [mainBundle pathForResource: @"Buildings" ofType: @"sqlite"];
@@ -36,73 +38,23 @@ BuildingsTableViewController *categoryDetailViewController = nil;
 
 - (void)viewDidLoad {
     self.navigationItem.title = @"Categories";
-    NSArray * BuildingsArray = [[BuildingStore defaultStore] allBuildings];
+    
     [self openDB];
     NSString *sql = [NSString stringWithFormat:@"SELECT DISTINCT Type FROM Buildings"];
     sqlite3_stmt *statement;
     if(sqlite3_prepare_v2(db, [sql UTF8String], -1, &statement, nil) ==SQLITE_OK)
     {
-        int i = 0;
+        
         NSMutableArray *tempCategory = [[NSMutableArray alloc] init];
         while(sqlite3_step(statement)==SQLITE_ROW){
-            /*NSString *field2Str;
-            NSString *field5Str;
-            NSString *field6Str;
-            NSString *field7Str;*/
+            
             char *field1 = (char *) sqlite3_column_text(statement,0);
             NSString *field1Str = [[NSString alloc] initWithUTF8String:field1];
-            NSLog(@"%@",field1Str);
-            /*char *field2 = (char *) sqlite3_column_text(statement,1);
-            if(field2 == NULL)
-            {
-                field2Str = @"NULL";
-            }
-            else{
-                field2Str = [[NSString alloc] initWithUTF8String:field2];
-            }
-            
-            double field3 = (double) sqlite3_column_double(statement,1);
-            //            double field3Str = [[double alloc] initWithUTF8String:field3];
-            double field4 = (double) sqlite3_column_double(statement,1);
-            //            double *field4Str = [[NSString alloc] initWithUTF8String:field4];
-            char *field5 = (char *) sqlite3_column_text(statement,1);
-            if(field5 == NULL)
-            {
-                field5Str = @"NULL";
-            }
-            else{
-                field5Str = [[NSString alloc] initWithUTF8String:field2];
-            }
-            char *field6 = (char *) sqlite3_column_text(statement,1);
-            if(field6 == NULL)
-            {
-                field6Str = @"NULL";
-            }
-            else{
-                field6Str = [[NSString alloc] initWithUTF8String:field2];
-            }
-            char *field7 = (char *) sqlite3_column_text(statement,1);
-            if(field7 == NULL)
-            {
-                field7Str = @"NULL";
-            }
-            else{
-                field7Str = [[NSString alloc] initWithUTF8String:field2];
-            }
-            */
+            //NSLog(@"%@",field1Str);
             
             
             [tempCategory addObject:field1Str];
-            /*
-            [[BuildingStore defaultStore] createBuildingName:(NSString *) field1Str
-                                            BuildingNickName:(NSString *) field2Str
-                                            BuildingLatitude:(double ) field3
-                                           BuildingLongitude:(double ) field4
-                                                 BuildingUrl:(NSString *) field5Str
-                                                BuildingType:(NSString *) field6Str
-                                               BuildingHours:(NSString *) field7Str];*/
-            //NSLog(@"Building Name : %@  BuildingNickName: %i", field1Str, i++);
-            //NSLog(@"Building Name :   Rarity: ");
+
             
         }
         self.categories = tempCategory;
@@ -118,6 +70,7 @@ BuildingsTableViewController *categoryDetailViewController = nil;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    sqlite3_close(db);
 }
 
 
@@ -142,11 +95,7 @@ BuildingsTableViewController *categoryDetailViewController = nil;
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    /*// Create an instance of UITableViewCell, with default appearance
-     UITableViewCell *cell =
-     [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-     reuseIdentifier:@"UITableViewCell"] ;
-     */
+
     // Check for a reusable cell first, use that if it exists
     UITableViewCell *cell =
     [tableView dequeueReusableCellWithIdentifier:@"UICategoryViewCell"];
@@ -165,14 +114,6 @@ BuildingsTableViewController *categoryDetailViewController = nil;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *selectedBuilding = [self.categories objectAtIndex:[indexPath row]];
-    /*
-     DetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
-     detailViewController.building = selectedBuilding; // hand off the current product to the detail view controller
-     
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     
-     // note: should not be necessary but current iOS 8.0 bug (seed 4) requires it
-     [tableView deselectRowAtIndexPath:indexPath animated:NO];*/
     categoryDetailViewController.pickedCategory = selectedBuilding;
 }
 /*
@@ -219,9 +160,7 @@ BuildingsTableViewController *categoryDetailViewController = nil;
     if ( [[segue identifier] isEqualToString:@"categoryDetail"] ) {
         
        categoryDetailViewController = [segue destinationViewController];
-        
-        // In order to manipulate the destination view controller
-        //categoryDetailViewController.pickedCategory = self.pickedCategory;    
+    
     }
 
 }

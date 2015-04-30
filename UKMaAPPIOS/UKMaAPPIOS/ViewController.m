@@ -5,14 +5,17 @@
 //  Created by Patrick Good on 2/25/15.
 //  Copyright (c) 2015 Patrick Good. All rights reserved.
 //
-
+/*
+ Abstract:
+ File responsible for displaying the map. It is also the GMSMapViewDelegate. Note this is the first view controller of the app. This is where you will implement 90% of the functions for google maps.
+ */
 #import "ViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import <CoreLocation/CoreLocation.h>
-@interface ViewController () <UISearchBarDelegate, UISearchResultsUpdating, GMSMapViewDelegate >
+@interface ViewController () < GMSMapViewDelegate >
 @property (strong, nonatomic) NSArray *filteredList;
 @property (strong, nonatomic) UISearchController *searchController;
-@property (strong, nonatomic) Building *TappedBuilding;
+@property (strong, nonatomic) Building *TappedBuilding; //Tapped building on map info
 @property (nonatomic) bool didTapBuilding;
 @end
 
@@ -23,8 +26,7 @@
 }
 
 -(NSString *) filePath {
-    // NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    //return [[paths objectAtIndex: 0] stringByAppendingPathComponent:@"Warframe.sqlite"];
+    
     NSBundle * mainBundle = [NSBundle mainBundle];
     NSLog(@"%@", mainBundle);
     NSString * myFile = [mainBundle pathForResource: @"Buildings" ofType: @"sqlite"];
@@ -45,14 +47,14 @@
 }
 
 - (void)viewDidLoad {
-    NSArray * BuildingsArray = [[BuildingStore defaultStore] allBuildings];
-    [self openDB];
+    //Commented the following code out. Placed in viewWillAppear instead. Left here in case we need it later on.
+    /*[self openDB];
     NSString *sql = [NSString stringWithFormat:@"SELECT Name,NickName, Latitude, Longitude, Url, Type, Hours FROM Buildings"];
     //sql = [sql stringByAppendingString:self.pickedCategory];
     sqlite3_stmt *statement;
     if(sqlite3_prepare_v2(db, [sql UTF8String], -1, &statement, nil) ==SQLITE_OK)
     {
-        int i = 0;
+        //Load building data into Building store arrary
         while(sqlite3_step(statement)==SQLITE_ROW){
             NSString *field2Str;
             NSString *field5Str;
@@ -109,77 +111,22 @@
                                                  BuildingUrl:(NSString *) field5Str
                                                 BuildingType:(NSString *) field6Str
                                                BuildingHours:(NSString *) field7Str];
-            NSLog(@"Building Name : %@  BuildingNickName: %@, BuildingLat: %f, BuildingLong: %f, building URL: %@, buildingType: %@, BuildingHours: %@ ", field1Str, field2Str, field3, field4, field5Str, field6Str, field7Str);
-            //NSLog(@"Building Name :   Rarity: ");
+            //NSLog(@"Building Name : %@  BuildingNickName: %@, BuildingLat: %f, BuildingLong: %f, building URL: %@, buildingType: %@, BuildingHours: %@ ", field1Str, field2Str, field3, field4, field5Str, field6Str, field7Str);
+            
     
             
         }
-    }
+    }*/
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    /*CLLocationManager *locationManager;
-    if (nil == locationManager)
-        locationManager = [[CLLocationManager alloc] init];
     
-    locationManager.delegate = self;
-    //Configure Accuracy depending on your needs, default is kCLLocationAccuracyBest
-    locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-    
-    // Set a movement threshold for new events.
-    locationManager.distanceFilter = 500; // meters
-    
-    [locationManager startUpdatingLocation];*/
-    // Create a GMSCameraPosition that tells the map to display the
-    // coordinate -33.86,151.20 at zoom level 6.
-  
-    
-  
-    /*
+    //Note screen code is commented out. Needs to be implemented where the map rect is displayed just below navigation bar and not let navigation bar display over it.
     //Sets cameras position to University of Kentucky.
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:38.0333 longitude:-84.5000 zoom:14];
-    //CGRect screenRect = [[UIScreen mainScreen]];
-    ////mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    //Creates map view for map and enables users location to be shown.
-    //mapView_ = [GMSMapView mapWithFrame:[CGRectMake(0, self.navigationController.navigationBar.frame.size.height, screenRect.size.width, screenRect.size.height - self.navigationController.navigationBar.frame.size.height)] camera:camera];
-    
-    //mapView_  = [GMSMapView mapWithFrame: [CGRectMake(0, 120, self.view.bounds.size.width, self.view.bounds.size.height - 120) ] camera:camera];
-
-    CGRect mapRect = CGRectMake(0, 120, self.view.bounds.size.width, self.view.bounds.size.height-120);
-    mapView_ = [GMSMapView mapWithFrame: mapRect camera: camera];
-    
-    mapView_.myLocationEnabled = YES;
-    [mapView_ setMinZoom:13 maxZoom:mapView_.maxZoom];
-    mapView_.settings.compassButton = YES;
-    mapView_.settings.myLocationButton = YES;
-    NSLog(@"User's location: %@", mapView_.myLocation);
-    self.view = mapView_;//Sets current view to be mapView
-    // Creates a marker in the center of the map.
-    //Sample marker.
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(38.03330,-84.5000 );
-    marker.title = @"Lexington";
-    marker.snippet = @"Kentucky";
-    
-    marker.map = mapView_;
-    
-    searchedMarker = [[GMSMarker alloc] init];
-    [mapView_ setSelectedMarker:marker];
-    */
-    
-    
-    //Sets cameras position to University of Kentucky.
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:38.0333 longitude:-84.5000 zoom:14];
-    //CGRect screenRect = [[UIScreen mainScreen]];
-    ////mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    //Creates map view for map and enables users location to be shown.
-    //mapView_ = [GMSMapView mapWithFrame:[CGRectMake(0, self.navigationController.navigationBar.frame.size.height, screenRect.size.width, screenRect.size.height - self.navigationController.navigationBar.frame.size.height)] camera:camera];
-    
-    //mapView_  = [GMSMapView mapWithFrame: [CGRectMake(0, 120, self.view.bounds.size.width, self.view.bounds.size.height - 120) ] camera:camera];
-    
-    CGRect mapRect = CGRectMake(0, 120, self.view.bounds.size.width, self.view.bounds.size.height-120);
+    //UIView *screen = [[UIView alloc] initWithFrame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    CGRect mapRect = CGRectMake(0, 80, self.view.bounds.size.width, self.view.bounds.size.height-120);
+    //self.view = screen;
     mapView_ = [GMSMapView mapWithFrame: mapRect camera: camera];
     [self.view addSubview:mapView_];
-    //self.view.addSubview(mapView_);
     mapView_.mapType = kGMSTypeNormal;
 
     mapView_.delegate = self;
@@ -196,57 +143,150 @@
     NSLog(@"User's location: %@", mapView_.myLocation);
     self.view = mapView_;//Sets current view to be mapView
     // Creates a marker in the center of the map.
-    //Sample marker.
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(38.03330,-84.5000 );
-    marker.title = @"Lexington";
-    marker.snippet = @"Kentucky";
+    //Sample marker commented out because it is not neeeded.
+    //GMSMarker *marker = [[GMSMarker alloc] init];
+    //marker.position = CLLocationCoordinate2DMake(38.03330,-84.5000 );
+    //marker.title = @"Lexington";
+    //marker.snippet = @"Kentucky";
     
-    marker.map = mapView_;
-    
+    //marker.map = mapView_;
+    sqlite3_close(db);
     searchedMarker = [[GMSMarker alloc] init];
     tappedMarker = [[GMSMarker alloc] init];
-    [mapView_ setSelectedMarker:marker];
+    
+    //[mapView_ setSelectedMarker:marker];
     self.navigationItem.title = @"UKMA-APP";
 }
 - (void) viewWillAppear:(BOOL)animated{
-    if(self.isSearch)
+    
+    [self openDB];
+    NSString *sql = [NSString stringWithFormat:@"SELECT Name,NickName, Latitude, Longitude, Url, Type, Hours FROM Buildings"];
+    //sql = [sql stringByAppendingString:self.pickedCategory];
+    sqlite3_stmt *statement;
+    if(sqlite3_prepare_v2(db, [sql UTF8String], -1, &statement, nil) ==SQLITE_OK)
+    {
+        //Load building data into Building store arrary
+        while(sqlite3_step(statement)==SQLITE_ROW){
+            NSString *field2Str;
+            NSString *field5Str;
+            NSString *field6Str;
+            NSString *field7Str;
+            char *field1 = (char *) sqlite3_column_text(statement,0);
+            NSString *field1Str = [[NSString alloc] initWithUTF8String:field1];
+            char *field2 = (char *) sqlite3_column_text(statement,1);
+            if(field2 == NULL)
+            {
+                field2Str = @"NULL";
+            }
+            else{
+                field2Str = [[NSString alloc] initWithUTF8String:field2];
+            }
+            
+            double field3 = (double) sqlite3_column_double(statement,2);
+            //            double field3Str = [[double alloc] initWithUTF8String:field3];
+            double field4 = (double) sqlite3_column_double(statement,3);
+            //            double *field4Str = [[NSString alloc] initWithUTF8String:field4];
+            char *field5 = (char *) sqlite3_column_text(statement,4);
+            if(field5 == NULL)
+            {
+                field5Str = @"NULL";
+            }
+            else{
+                field5Str = [[NSString alloc] initWithUTF8String:field5];
+            }
+            char *field6 = (char *) sqlite3_column_text(statement,5);
+            if(field6 == NULL)
+            {
+                field6Str = @"NULL";
+            }
+            else{
+                field6Str = [[NSString alloc] initWithUTF8String:field6];
+            }
+            char *field7 = (char *) sqlite3_column_text(statement,6);
+            if(field7 == NULL)
+            {
+                field7Str = @"NULL";
+            }
+            else{
+                field7Str = [[NSString alloc] initWithUTF8String:field7];
+            }
+            
+            
+            
+            
+            
+            [[BuildingStore defaultStore] createBuildingName:(NSString *) field1Str
+                                            BuildingNickName:(NSString *) field2Str
+                                            BuildingLatitude:(double ) field3
+                                           BuildingLongitude:(double ) field4
+                                                 BuildingUrl:(NSString *) field5Str
+                                                BuildingType:(NSString *) field6Str
+                                               BuildingHours:(NSString *) field7Str];
+            //NSLog(@"Building Name : %@  BuildingNickName: %@, BuildingLat: %f, BuildingLong: %f, building URL: %@, buildingType: %@, BuildingHours: %@ ", field1Str, field2Str, field3, field4, field5Str, field6Str, field7Str);
+            
+            
+            
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    //Clear the map of markers
+    [mapView_ clear];
+    if(self.isSearch)//If used some sort of search (sidebar, searchbar) then do this.
         {
-            //searchedMarker = [[GMSMarker alloc] init];
-            //camera = [GMSCameraPosition cameraWithLatitude:self.searchedBuilding.buildingLatitude longitude:self.searchedBuilding.buildingLongitude zoom:14];
-            //Creates map view for map and enables users location to be shown.
-            //mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-            //mapView_.myLocationEnabled = YES;
-            [mapView_ animateToLocation:CLLocationCoordinate2DMake(self.searchedBuilding.buildingLatitude, self.searchedBuilding.buildingLongitude)];
-            searchedMarker.position = CLLocationCoordinate2DMake(self.searchedBuilding.buildingLatitude,self.searchedBuilding.buildingLongitude );
-            searchedMarker.title = self.searchedBuilding.buildingName;
+            NSMutableArray * markerArray = [NSMutableArray array];//Array for markers on map.
+            unsigned long count = self.searchedBuildingResults.count;
+            for (int i = 0; i < [self.searchedBuildingResults count]; i++) {//For the size of the searched filtered array with building results create markers
+                GMSMarker * marker = [[GMSMarker alloc] init];
+                Building *searchedBuilding = [self.searchedBuildingResults objectAtIndex:i];
+                if(count ==1)//If only one object animate to its location
+                {
+                 [mapView_ animateToLocation:CLLocationCoordinate2DMake([searchedBuilding buildingLatitude], [searchedBuilding buildingLongitude])];
+                }
+            
+            marker.position = CLLocationCoordinate2DMake([searchedBuilding buildingLatitude], [searchedBuilding buildingLongitude]);
+            marker.title = [searchedBuilding buildingName];
             NSString * snippitString = @"";
             NSString *string1 = nil;
             NSString *string2 = nil;
-            if([self.searchedBuilding.buildingType isEqual: @"NULL"]){
+            if([searchedBuilding.buildingType isEqual: @"NULL"]){
                 string1 = @"";
                 
             }
             else
             {
-                string1 = [NSString stringWithFormat:@"Type: %@", self.searchedBuilding.buildingType];
+                string1 = [NSString stringWithFormat:@"Type: %@", searchedBuilding.buildingType];
             }
-            if([self.searchedBuilding.buildingHours isEqual: @"NULL"]){
+            if([searchedBuilding.buildingHours isEqual: @"NULL"]){
                 string2 = @"";
                 
             }
             else
             {
-                string2 = [NSString stringWithFormat:@"Hours: %@", self.searchedBuilding.buildingHours];
+                string2 = [NSString stringWithFormat:@"Hours: %@", searchedBuilding.buildingHours];
             }
             snippitString = [NSString stringWithFormat:@"%@ \r %@", string1, string2];
             
             
-            searchedMarker.snippet = snippitString;
-            searchedMarker.appearAnimation = kGMSMarkerAnimationPop;
-            searchedMarker.map = mapView_;
+            marker.snippet = snippitString;
+            marker.appearAnimation = kGMSMarkerAnimationPop;
+            marker.map = mapView_;
             [mapView_ setSelectedMarker:searchedMarker];
-            [mapView_ animateToZoom:18];
+            if(count ==1){//If one object zoom in on it.
+                    
+                    [mapView_ animateToZoom:18];
+            }
+            else{
+                [mapView_ animateToZoom:13];
+            }
+            [markerArray arrayByAddingObject:[[GMSMarker alloc] init]];
+            }
             
         }
 
@@ -257,13 +297,14 @@
     mapView_.selectedMarker = nil;
 }
 - (void) mapView: (GMSMapView*) mapVIew didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
-    NSLog(@"cat");
-    Building * building = nil;
+    
+    //Building * building = nil;
     double area = 0.0003;
     NSArray *buildings = [[BuildingStore defaultStore] allBuildings];
     double buildingLatitude;
     double buildingLongitude;
     self.didTapBuilding = false;
+    NSLog(@"%lu", (unsigned long)buildings.count);
     for (int i=0; i< buildings.count; i++  ) {
         buildingLatitude = [buildings[i] buildingLatitude];
         buildingLongitude = [buildings[i] buildingLongitude];
@@ -272,7 +313,7 @@
         {
             self.TappedBuilding = buildings[i];
             area = area - 0.0002;
-            NSLog(@"hahayes");
+            
             self.didTapBuilding = TRUE;
             
             
@@ -315,18 +356,12 @@
         //searchedMarker = nil;
         self.didTapBuilding = false;
     }else{
-        NSLog(@"dog");
+       ;
     }
     
     
-    NSLog(@"%f, %f", coordinate.latitude, coordinate.longitude);
-/*    [self.view setNeedsDisplay];
-    [mapView_ setNeedsDisplay];
-    if(self.didTapBuilding)
-    {
-        //[self viewDidLoad];
-        [self viewWillAppear:TRUE];
-    }*/
+    //Testing NSLog(@"%f, %f", coordinate.latitude, coordinate.longitude);
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -335,16 +370,4 @@
 }
 
     @end
-/*
- [mapView_ clear]; //Remove all markers/overlays
- marker.map = nil; //disable marker to use later
- marker.icon = [GMSMarker markerImageWithColor:[UIColor blackColor]];// change color
- london.icon = [UIImage imageNamed:@"house"];//change marker icon
- marker.flat = YES;
- //Add poly lines
- 
- 
- 
- 
- 
- */
+
